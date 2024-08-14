@@ -1,25 +1,34 @@
-# .gitignore for Tablicious
+# octave-repros .gitignore
 
-# Binary artifacts and intermediate build stuff
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.oct
-/target
-cmake-build-debug
+*.obj
 
-# Intermediate doc-generation files
-/doc/*.dvi
-/doc/*.qhp
-/doc/topics.tmp
-/doc/TIMESTAMP
+# Precompiled Headers
+*.gch
+*.pch
 
-# Data and log droppings
-*.log
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# Editor and IDE config and droppings
-!.idea
-.idea/workspace.xml
-.vscode
+# Fortran module files
+*.mod
+*.smod
 
-# GitHub Pages deployment stuff
-/docs/Gemfile.lock
-/docs/_site
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app

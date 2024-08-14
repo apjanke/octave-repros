@@ -1,24 +1,18 @@
-# README - octo-docto-repro
+# octave-repros
 
-This repo contains reproduction cases for issues that apjanke encountered in using the
-GNU Octave [OF doctest package](https://github.com/gnu-octave/octave-doctest/) with
-[Tablicious](https://github.com/apjanke/octave-tablicious) in 2024-02 or so.
+My repo of repros for GNU Octave related issues.
 
-This is focused on "advanced" functionality, like namespaces and classdef classes and
-classdefs with methods with the same name as core Octave functions, and stuff like that.
+This is apjanke's repo of repro cases for issues related to [GNU Octave](https://octave.org/) and [Octave.app](https://octave-app.org/). There's no "real" code or programs in here, just little tools for reproducing bugs, and related data, for doing bug reports and fixes.
 
 ## Repo structure
 
-* octo-docto-repro
-  * `r/` - the repros
-    * `<name>` - a particular repro case
-  * `README.md` - this file
+* `r/` - The repro cases
+* `doc-project/` - Doco about this project/repo itself
 
-The repro cases under the `r/` directory are arbitrarily structured, and independent from each other.
+## Repros
 
-## License
-
-The code in this repo is licensed under GNU GPL v3 or later. See the `LICENSE` file for license details.
+* octo-docto - Various repros for the Forge doctest package
+* build-fail-* - Build failures when building Octave from source
 
 ## Authors and Acknowledgments
 

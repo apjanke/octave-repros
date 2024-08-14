@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+#
+# Build octave-devel, for repro-ing the OOM build failure
+
+function info() { echo >&2 "$*"; }
+function runit() {
+  info "Running: $*"
+  time "$@"
+}
+
+# REPRO="build-fail-OOM-parallel_2024-08"
+REPRO=$(basename $(dirname $(realpath "$0")))
+VAR="${HOME}/var/octave-repros/${REPRO}"
+builds_dir="${VAR}/builds"
+
+host=$(hostname | sed -e 's/[.].*//')
+date=$(date +%Y-%m-%d_%H-%M-%S)
+bld_tag="build_${date}_${host}"
+bld_dir="$builds_dir/$bld_tag"
+log_dir="$bld_dir/logs"
+mkdir -p "$log_dir"
+
+if brew ls | grep -x octave-devel > /dev/null; then
+  info "Uninstalling octave-devel..."
+  brew uninstall octave-devel
+fi
+
+export HOMEBREW_LOGS="$log_dir"
+runit brew install --HEAD octave-devel
+st=$1
+info "exit status: $st"
+
+if [[ $st == 0 ]]; then label='OK'; else label='ERROR'; fi
+new_tag="${bld_tag} - ${label}"
+new_bld_dir="$builds_dir/$new_tag"
+mv "$bld_dir" "$new_bld_dir"
+
+info "Logs are at: $new_bld_dir"
